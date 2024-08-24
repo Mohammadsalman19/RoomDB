@@ -22,11 +22,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var delete: Button
     private lateinit var read: Button
 
+    private lateinit var database: ContactDB
+
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        database = ContactDB.getInstance(this)
 
         textId = findViewById(R.id.editTextId)
         textName = findViewById(R.id.editTextName)
