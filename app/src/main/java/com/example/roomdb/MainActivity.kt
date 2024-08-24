@@ -59,5 +59,12 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        delete.setOnClickListener {
+            GlobalScope.launch {
+                val contact = Contact(textId.text.toString().toInt(), textName.text.toString(), textPhone.text.toString())
+                database.getContactDAO().delete(contact)
+            }
+        }
+
     }
 }
