@@ -41,5 +41,14 @@ class MainActivity : AppCompatActivity() {
         delete = findViewById(R.id.buttonDelete)
         read = findViewById(R.id.buttonRead)
 
+
+
+        insert.setOnClickListener {
+            GlobalScope.launch {
+                val contact = Contact(0, textName.text.toString(), textPhone.text.toString())
+                database.getContactDAO().insert(contact)
+            }
+        }
+
     }
 }
