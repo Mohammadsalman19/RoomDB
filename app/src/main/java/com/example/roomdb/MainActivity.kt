@@ -1,6 +1,7 @@
 package com.example.roomdb
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
@@ -64,7 +65,15 @@ class MainActivity : AppCompatActivity() {
                 val contact = Contact(textId.text.toString().toInt(), textName.text.toString(), textPhone.text.toString())
                 database.getContactDAO().delete(contact)
             }
+
         }
 
+        read.setOnClickListener {
+                database.getContactDAO().getContact().observe(this) { list->
+                    list.forEach {
+                        Log.d("****", "${it.id} ${it.name} ${it.number}")
+                    }
+                }
+            }
     }
 }
