@@ -48,6 +48,15 @@ class MainActivity : AppCompatActivity() {
                 val contact = Contact(0, textName.text.toString(), textPhone.text.toString())
                 database.getContactDAO().insert(contact)
             }
+
+        }
+
+        update.setOnClickListener {
+            GlobalScope.launch {
+                val contact = Contact(textId.text.toString().toInt(), textName.text.toString(), textPhone.text.toString())
+                database.getContactDAO().update(contact)
+            }
+
         }
 
     }
